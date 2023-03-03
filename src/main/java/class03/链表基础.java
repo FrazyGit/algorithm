@@ -76,7 +76,7 @@ public class 链表基础 {
     public static Node delete(Node head, int num) {
 
         while (head != null) {
-            if (head.value != num) {
+            if ((int)head.value != num) {
                 break;
             }
             head = head.next;
@@ -87,7 +87,7 @@ public class 链表基础 {
 
 
         while (cur != null) {
-            if (cur.value == num) {
+            if ((int)cur.value == num) {
                 pre.next = cur.next;
 
             } else {

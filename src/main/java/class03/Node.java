@@ -4,13 +4,16 @@ package class03;
  * @author wlkq
  * @date 2023-02-28 14:04
  */
-public class Node {
+public class Node<T> {
 
-    public int value;
+    public T value;
 
     public Node next;
 
-    public Node(int value) {
+    public Node(T value) {
         this.value = value;
+    }
+
+    public Node() {
     }
 }
