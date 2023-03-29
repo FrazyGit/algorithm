@@ -1,4 +1,4 @@
-package class01;
+package class01.二分法;
 
 import java.util.Arrays;
 

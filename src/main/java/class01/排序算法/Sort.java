@@ -1,4 +1,4 @@
-package class01;
+package class01.排序算法;
 
 import java.util.Arrays;
 
@@ -34,7 +34,7 @@ public class Sort {
         }
 
         for (int i = 0; i < arr.length; i++) {
-            int min = i;
+            int min = i;//有序位置的最后一个数
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < arr[min]) {
                     min = j;

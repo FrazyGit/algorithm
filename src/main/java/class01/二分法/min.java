@@ -1,4 +1,4 @@
-package class01;
+package class01.二分法;
 
 import java.util.Arrays;
 
@@ -34,9 +34,9 @@ public class min {
             return arr.length - 1;
         }
 
-        //注意下面边界
-        int l = 1;
-        int r = arr.length - 2;
+
+        int l = 0;
+        int r = arr.length - 1;
 
         while (l < r) {
             int min = l + (r - l) / 2;
@@ -99,9 +99,9 @@ public class min {
     }
 
     public static void main(String[] args) {
-        int testCount = 50000;
-        int maxSize = 100;
-        int maxValue = 100;
+        int testCount = 500000;
+        int maxSize = 1000;
+        int maxValue = 1000;
 
 
         for (int i = 0; i < testCount; i++) {
