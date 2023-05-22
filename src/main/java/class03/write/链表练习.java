@@ -11,7 +11,7 @@ public class 链表练习 {
         Node next = null;
         Node last = null;
 
-//        Node cur = head;
+
 
         while (head != null) {
             next = head.getNext();

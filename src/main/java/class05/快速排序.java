@@ -19,7 +19,7 @@ import java.util.Stack;
 public class 快速排序 {
 
 
-    public static int[] flag(int[] arr, int l, int r) {
+    public static int[] partition(int[] arr, int l, int r) {
 
         if (l > r) {
             return new int[]{-1, -1};
@@ -66,7 +66,7 @@ public class 快速排序 {
         }
 
 
-        int[] flag = flag(arr, l, r);
+        int[] flag = partition(arr, l, r);
 
         process(arr, l, flag[0] - 1);//当flag返回[0,0]时，r为复数
         process(arr, flag[1] + 1, r);//最后一个数最大时flag[1] + 1>r
@@ -105,7 +105,7 @@ public class 快速排序 {
 
         swap(arr, (int) (Math.random() * N), N-1);//随机一个数当目标数
 
-        int[] flag = flag(arr, 0, N-1);
+        int[] flag = partition(arr, 0, N-1);
 
         int al = flag[0];
         int ar = flag[1];
@@ -122,7 +122,7 @@ public class 快速排序 {
             if (pop.l < pop.r) {//边界
 
                 swap(arr,pop.r,getRandomNumInRange(pop.r, pop.l));//随机一个数当目标数
-                int[] flag1 = flag(arr, pop.l, pop.r);
+                int[] flag1 = partition(arr, pop.l, pop.r);
 
                 myStack.push(new Help(pop.l, flag1[0] - 1));
                 myStack.push(new Help(flag1[1] + 1, pop.r));
