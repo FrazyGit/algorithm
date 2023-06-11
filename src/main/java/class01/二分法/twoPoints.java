@@ -41,6 +41,38 @@ public class twoPoints {
             } else if (arr[mid] < num) {
                 l = mid + 1;
 
+            } else if (arr[mid] > num) { //可能让r越界
+                r = mid - 1;
+            }
+
+        }
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(num);
+//        System.out.println(l);
+
+        return arr[l] == num;//只能是l r会越界
+
+
+    }
+
+    public static boolean search2(int[] arr, int num) {
+
+        if (arr == null || arr.length < 1) {
+            return false;
+        }
+
+        int l = 0;
+        int r = arr.length - 1;
+        int mid;
+
+        while (l <= r) {
+            mid = l + (r - l) / 2;
+
+            if (arr[mid] == num) {
+                return true;
+            } else if (arr[mid] < num) {
+                l = mid + 1;
+
             } else if (arr[mid] > num) {
                 r = mid - 1;
             }
@@ -50,7 +82,7 @@ public class twoPoints {
 //        System.out.println(num);
 //        System.out.println(l);
 
-        return arr[l] == num;
+        return false; //只有r>l时才会出来
 
 
     }
@@ -81,8 +113,8 @@ public class twoPoints {
 
     public static void main(String[] args) {
         int testCount = 10000;
-        int maxSize = 100;
-        int maxValue = 100;
+        int maxSize = 1000;
+        int maxValue = 1000;
 
 
         for (int i = 0; i < testCount; i++) {
@@ -97,6 +129,16 @@ public class twoPoints {
                 System.out.println("nice");
             } else {
                 System.out.println("no");
+                System.out.println(Arrays.toString(ints));
+                System.out.println(value);
+                System.out.println(search(ints, value));
+                return;
+            }
+
+            if (test(ints, value) == search2(ints, value)) {
+                System.out.println("nice2");
+            } else {
+                System.out.println("no2");
                 System.out.println(Arrays.toString(ints));
                 System.out.println(value);
                 System.out.println(search(ints, value));

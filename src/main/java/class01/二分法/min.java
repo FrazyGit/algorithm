@@ -26,7 +26,7 @@ public class min {
             return -1;
         }
 
-        if (arr.length == 1 || arr[0] < arr[1]) {
+        if (arr.length == 1 || arr[0] < arr[1]) {//一开始就去除了标准版r越界的可能
             return 0;
         }
 
@@ -55,8 +55,10 @@ public class min {
 
 
         }
+        System.out.println(r);
+        System.out.println(l);
 
-        return l;//出while的情况是l=r 随便选一个是
+        return r;//出while的情况是l=r 随便选一个是
 
 
     }

@@ -1,4 +1,4 @@
-package class01.自写.二分法;
+package class01.自写.二分法.二分01;
 
 import java.util.Arrays;
 
