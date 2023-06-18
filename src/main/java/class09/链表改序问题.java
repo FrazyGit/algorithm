@@ -1,6 +1,6 @@
 package class09;
 
-import class03.write.Node;
+import class03.write.W01.Node;
 
 /**
  * 给你链表头结点H, 链表长度为偶数, 比如长度为8, 规定前4个节点编号 L1, L2, L3, L4,

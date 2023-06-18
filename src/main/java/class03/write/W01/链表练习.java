@@ -1,4 +1,4 @@
-package class03.write;
+package class03.write.W01;
 
 /**
  * @author wlkq
@@ -88,6 +88,9 @@ public class 链表练习 {
         System.out.println(current.getValue());
         print(current.getNext());
     }
+
+
+
 
 
 }

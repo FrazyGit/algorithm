@@ -1,6 +1,6 @@
 package class09;
 
-import class03.write.Node;
+import class03.write.W01.Node;
 
 
 /**

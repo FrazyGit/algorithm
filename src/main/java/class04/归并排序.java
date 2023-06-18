@@ -77,7 +77,7 @@ public class 归并排序 {
         while (p1 <= mid && p2 <= r) {
 
 
-            help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];// 相等先拷贝那边需要看情况 普通排序情况下先左边右边都行
+            help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];// 相等先拷贝哪边需要看情况 普通排序情况下先左边右边都行
 
 
         }

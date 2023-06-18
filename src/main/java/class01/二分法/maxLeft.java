@@ -22,13 +22,17 @@ public class maxLeft {
 
             if (arr[min] >= num) {
                 res=min;
-                r = min - 1;
+                r = min - 1; //一直检查到结束
             } else {
                 l = min + 1;
             }
 
 
         }
+//        l < r时还剩一个数没检查
+//        if (arr[l]>=num){
+//            res=l;
+//        }
 
         return res;
 
