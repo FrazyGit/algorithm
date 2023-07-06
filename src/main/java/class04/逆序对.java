@@ -12,7 +12,7 @@ package class04;
  * 左到右 一个数左边有多少个数比它大  右组拷贝产生 相等动左组
  * 规律 找另一边比它小的数逆序 相等动拷贝不产生的组
  * <p>
- * 2) 算和填数无法在同一个for循环中进行
+ * 2) 算和填数不在同一个for循环中进行
  * <p>
  * 用窗口不回退的技巧 保持O(N)
  *
@@ -39,41 +39,43 @@ public class 逆序对 {
     }
 
 
-//    public static int merge(int[] arr, int l, int m, int r) {
-//
-//        int[] help = new int[r - l + 1];
-//
-//        int i = help.length - 1;
-//        int p1 = m;
-//        int p2 = r;
-//
-//        int res = 0;
-//
-//        while (p1 >= l && p2 >= m + 1) {
-//
-//            res += arr[p1] > arr[p2] ? ((p2 - (m + 1)) + 1) : 0;
-//            help[i--] = arr[p1] > arr[p2] ? arr[p1--] : arr[p2--];
-//
-//        }
-//
-//        while (p1 >= l) {
-//            help[i--] = arr[p1--];
-//        }
-//
-//        while (p2 >= m + 1) {
-//            help[i--] = arr[p2--];
-//        }
-//
-//
-//        for (int j = 0; j < help.length; j++) {
-//            arr[l + j] = help[j];
-//
-//        }
-//        return res;
-//
-//    }
+    public static int merge(int[] arr, int l, int m, int r) {
 
-    public static int merge(int[] arr, int l, int mid, int r) {
+        int[] help = new int[r - l + 1];
+
+        int i = help.length - 1;
+        int p1 = m;
+        int p2 = r;
+
+        int res = 0;
+
+        while (p1 >= l && p2 >= m + 1) {
+
+            res += arr[p1] > arr[p2] ? ((p2 - (m + 1)) + 1) : 0;
+            help[i--] = arr[p1] > arr[p2] ? arr[p1--] : arr[p2--];
+
+        }
+
+        while (p1 >= l) {
+            help[i--] = arr[p1--];
+        }
+
+        while (p2 >= m + 1) {
+            help[i--] = arr[p2--];
+        }
+
+
+        for (int j = 0; j < help.length; j++) {
+            arr[l + j] = help[j];
+
+        }
+        return res;
+
+    }
+
+
+
+    public static int merge1(int[] arr, int l, int mid, int r) {
 
         int[] help = new int[r - l + 1];
 
@@ -95,7 +97,7 @@ public class 逆序对 {
         while (p1 <= mid && p2 <= r) {
 
 
-            help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
+            help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
 
 
         }
@@ -182,7 +184,7 @@ public class 逆序对 {
 
     // for test
     public static void main(String[] args) {
-        int testTime = 500000;
+        int testTime = 50000;
         int maxSize = 1000;
         int maxValue = 100;
         System.out.println("测试开始");

@@ -50,7 +50,7 @@ public class 大于两倍数对 {
 
         while (p1 <= m && p2 <= r) {
 
-            help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
+            help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];
 
         }
 

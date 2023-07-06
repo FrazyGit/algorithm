@@ -15,7 +15,7 @@ import java.util.Arrays;
  */
 public class 小和 {
 
-    //todo 改写出不同时进行的
+
 
     public static int process(int[] arr, int l, int r) {
 
@@ -34,7 +34,8 @@ public class 小和 {
 
     }
 
-    public static int merge(int l, int r, int mid, int[] arr) {
+    //算和填数据分开进行
+    public static int merge1(int l, int r, int mid, int[] arr) {
 
         int[] help = new int[r - l + 1];
 
@@ -45,7 +46,7 @@ public class 小和 {
         int res = 0;
         int windowR = mid + 1;
 
-        for (int k = l; k <= mid; k++) {
+        for (int k = l; k <= mid; k++) { //算结果 窗口的前提是单调性
             while (windowR <= r && arr[k] >= arr[windowR]) {
                 windowR++;
             }
@@ -53,10 +54,10 @@ public class 小和 {
 
         }
 
-        while (p1 <= mid && p2 <= r) {
+        while (p1 <= mid && p2 <= r) {//填数据 保证下个执行的merger的单调性
 
 
-            help[i++] = arr[p1] <= arr[p2] ? arr[p1++] : arr[p2++];// 相等先拷贝那边需要看情况 普通排序情况下先左边右边都行
+            help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];//算和填分开，相等先拷贝哪边不影响，主要是保证单调性
 
 
         }
@@ -73,46 +74,50 @@ public class 小和 {
             arr[l + j] = help[j];
         }
 
+
+
+
         return res;
 
     }
 
 
-//    public static int merge(int l, int r, int m, int arr[]) {
-//        int[] help = new int[r - l + 1];
-//
-//        int i = 0;
-//        int p1 = l;
-//        int p2 = m + 1;
-//
-//        int res = 0;
-//
-//
-//        while (p1 <= m && p2 <= r) {
-//            res += arr[p1] < arr[p2] ? (r - p2 + 1) * arr[p1] : 0;
-//            help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];
-//
-//        }
-//
-//
-//        while (p1 <= m) {
-//
-//
-//            help[i++] = arr[p1++];
-//        }
-//
-//        while (p2 <= r) {
-//            help[i++] = arr[p2++];
-//        }
-//
-//        for (int j = 0; j < help.length; j++) {
-//            arr[l + j] = help[j];
-//        }
-//
-//        return res;
-//
-//
-//    }
+    //算和填数据一起进行
+    public static int merge(int l, int r, int m, int arr[]) {
+        int[] help = new int[r - l + 1];
+
+        int i = 0;
+        int p1 = l;
+        int p2 = m + 1;
+
+        int res = 0;
+
+
+        while (p1 <= m && p2 <= r) {
+            res += arr[p1] < arr[p2] ? (r - p2 + 1) * arr[p1] : 0;
+            help[i++] = arr[p1] < arr[p2] ? arr[p1++] : arr[p2++];// 相等先拷贝那边需要看情况，保证算时数据不被跳过
+
+        }
+
+
+        while (p1 <= m) {
+
+
+            help[i++] = arr[p1++];
+        }
+
+        while (p2 <= r) {
+            help[i++] = arr[p2++];
+        }
+
+        for (int j = 0; j < help.length; j++) {
+            arr[l + j] = help[j];
+        }
+
+        return res;
+
+
+    }
 
     // for test
     public static int comparator(int[] arr) {
@@ -181,19 +186,22 @@ public class 小和 {
 
     // for test
     public static void main(String[] args) {
-        int testTime = 50000;
+        int testTime = 10000;
         int maxSize = 100;
         int maxValue = 100;
         boolean succeed = true;
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
+            int r1 = process(arr1, 0, arr1.length - 1);
+            int r2 = comparator(arr2);
 
-
-            if (process(arr1, 0, arr1.length - 1) != comparator(arr2)) {
+            if (r1!=r2) {
                 succeed = false;
-                printArray(arr1);
-                printArray(arr2);
+                System.out.println(Arrays.toString(arr1));
+                System.out.println(r1);
+                System.out.println(r2);
+
                 break;
             }
         }

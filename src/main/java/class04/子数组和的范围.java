@@ -118,7 +118,7 @@ public class 子数组和的范围 {
         int p2 = mid + 1;
 
         while (p1 <= mid && p2 <= r) {
-            help[i++] = sum[p1] <= sum[p2] ? sum[p1++] : sum[p2++];
+            help[i++] = sum[p1] < sum[p2] ? sum[p1++] : sum[p2++];
         }
 
         while (p1 <= mid) {
