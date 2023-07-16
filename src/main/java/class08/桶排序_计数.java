@@ -13,7 +13,7 @@ import java.util.Arrays;
  * @author wlkq
  * @date 2023-03-27 15:01
  */
-public class 桶排序 {
+public class 桶排序_计数 {
 
 
     //计数排序

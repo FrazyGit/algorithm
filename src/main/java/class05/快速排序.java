@@ -68,8 +68,8 @@ public class 快速排序 {
 
         int[] flag = partition(arr, l, r);
 
-        process(arr, l, flag[0] - 1);//当flag返回[0,0]时，r为复数
-        process(arr, flag[1] + 1, r);//最后一个数最大时flag[1] + 1>r
+        process(arr, l, flag[0] - 1);//当flag返回[0,0]时，r为负数 对应上面的边界
+        process(arr, flag[1] + 1, r);//最后一个数最大时flag[1] + 1>r 对应上面的边界
 
 
     }

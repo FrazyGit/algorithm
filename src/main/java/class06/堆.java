@@ -55,6 +55,7 @@ public class 堆 {
 
 
 
+        //调整
         private void insert(int index) {
             while (heap[index] > heap[(index - 1) / 2]) {
                 swap(heap, index, (index - 1) / 2);
@@ -64,6 +65,7 @@ public class 堆 {
 
         }
 
+        //调整
         private void heapify(int index) {
 
             int left = 2 * index + 1;
@@ -106,7 +108,7 @@ public class 堆 {
         }
 
 
-        public int pop() {
+        public int pop() {//弹出栈顶元素
             if (size == 0) {
                 throw new RuntimeException("堆为空");
             }
@@ -120,7 +122,7 @@ public class 堆 {
         }
 
 
-        //堆中某个位置的值发生变化, 由x-->x`
+//        堆中某个位置的值发生变化, 由x-->x`
 //        从index位置开始做 heapinsert, heapify:
 //        如果index位置数变大了, 只可能发生heapinsert往上移动
 //        如果index位置数变小了, 只可能发生heapify往下移动

@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author wlkq
  * @date 2023-03-27 16:39
  */
-public class 桶排序2 {
+public class 桶排序_基数 {
 
 
     //需要2个辅助数组

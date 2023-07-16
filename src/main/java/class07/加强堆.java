@@ -8,6 +8,10 @@ import java.util.Comparator;
 import java.util.HashMap;
 
 /**
+ * 加强如下
+ * 1）建立反向索引表
+ * 2）建立比较器
+ *
  * heapinsert
  * 两个终止条件:
  * 1. 来到0位置了, 自己跟自己比较
