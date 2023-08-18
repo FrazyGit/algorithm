@@ -1,4 +1,6 @@
-package class12;
+package class13;
+
+import class12.Node;
 
 import java.util.ArrayList;
 
