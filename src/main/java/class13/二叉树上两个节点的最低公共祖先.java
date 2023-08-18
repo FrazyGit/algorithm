@@ -15,18 +15,18 @@ public class 二叉树上两个节点的最低公共祖先 {
         }
     }
 
+// todo
+//    public static Node getLowestAncestor(Node head){
+//
+//    }
 
-    public static Node getLowestAncestor(Node head){
-
-    }
-
-    public static info process(Node x){
-
-        if (x==null){
-            return new info(false,false,null);
-
-        }
-
-    }
+//    public static info process(Node x){
+//
+//        if (x==null){
+//            return new info(false,false,null);
+//
+//        }
+//
+//    }
 
 }
