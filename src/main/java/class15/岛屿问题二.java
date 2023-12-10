@@ -1,6 +1,7 @@
 package class15;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -90,7 +91,7 @@ public class 岛屿问题二 {
             int a = index(a1, a2);
             int b = index(b1, b2);
 
-            if (sizes[a]==0||sizes[b]==0){
+            if (sizes[a] == 0 || sizes[b] == 0) {
                 return;
             }
 
@@ -110,9 +111,6 @@ public class 岛屿问题二 {
 
         }
 
-        public boolean isSameSet(int a, int b) {
-            return findFather(a) == findFather(b);
-        }
 
         //下标计算
         public int findFather(int value) {
@@ -125,6 +123,100 @@ public class 岛屿问题二 {
             for (he--; he > 0; he--) {
                 parents[help[he]] = value;
             }
+
+            return value;
+        }
+
+    }
+
+//    当m,n很大, m:100亿, n10亿, k=5 优化
+//    用字符串代表一个位置 “17_1009”
+    public class UnionFind2 {
+
+        private HashMap<String, String> parents;
+
+        private HashMap<String, Integer> size;
+
+        private int sets;
+
+        private ArrayList<String> help;
+
+
+        public UnionFind2(int M, int N) {
+            parents = new HashMap<>();
+            size = new HashMap<>();
+            help = new ArrayList<>();
+            sets = 0;
+
+        }
+
+
+        public int getSets() {
+            return sets;
+        }
+
+
+        private Integer connect(int a, int b) {
+
+            String key = String.valueOf(a) + "_" + String.valueOf(b);
+            if (!parents.containsKey(key)) {
+                parents.put(key, key);
+                size.put(key, 1);
+                sets++;
+
+                String keyDown = String.valueOf(a - 1) + "_" + String.valueOf(b);
+                String keyUp = String.valueOf(a + 1) + "_" + String.valueOf(b);
+                String keyLeft = String.valueOf(a) + "_" + String.valueOf(b - 1);
+                String keyRight = String.valueOf(a) + "_" + String.valueOf(b + 1);
+
+                union(keyUp, key);
+                union(keyDown, key);
+                union(keyLeft, key);
+                union(keyRight, key);
+            }
+
+            return sets;
+
+        }
+
+
+        public void union(String s1, String s2) {
+
+            if (parents.containsKey(s1) || parents.containsKey(s2)) {
+                String s1father = findFather(s1);
+                String s2father = findFather(s2);
+
+                Integer s1Size = size.get(s1father);
+                Integer s2Size = size.get(s2father);
+
+                if (!s1father.equals(s2father)) {
+                    if (s1Size >= s2Size) {
+                        parents.put(s2father, s1father);
+                        size.put(s1father, s1Size + s2Size);
+                    } else {
+                        parents.put(s1father, s2father);
+                        size.put(s2father, s1Size + s2Size);
+                    }
+                }
+                sets--;
+            }
+
+        }
+
+
+        public String findFather(String value) {
+            while (!value.equals(parents.get(value))) {
+                help.add(value);
+                value = parents.get(value);
+            }
+
+            for (String item :
+                    help) {
+                parents.put(item, value);
+            }
+
+            //清空集合
+            help.clear();
 
             return value;
         }
